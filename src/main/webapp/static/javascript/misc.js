@@ -1,3 +1,3 @@
 window.onload = function () {	
-	handleResize();
+	toScala(300, 400);
 }

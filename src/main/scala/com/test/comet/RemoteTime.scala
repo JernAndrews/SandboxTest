@@ -13,15 +13,13 @@ import xml.Text
 
 class RemoteTime extends CometActor {
 
-  override def defaultPrefix = Full("comet")
-
   def render = "#time *" #> "Waiting for Updates"
 
   Schedule(() => this ! Tic, 1.seconds)
 
   override def lowPriority: PartialFunction[Any, Unit] = {
     case Tic => {
-      println("### Log Time Tick at: " + timeNow)
+      //println("### Log Time Tick at: " + timeNow)
       partialUpdate(SetHtml("time", Text(timeNow.toString)))
       Schedule(() => this ! Tic, 1.seconds)
     } //case Tic
